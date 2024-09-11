@@ -1,0 +1,415 @@
+v = c(5,10,15,20,25,30)
+print(paste("The given vector is " ,v))
+mini = min(v)
+maxi = max(v)
+print(paste("maxi is ",maxi))
+print(paste("mini is ",mini))
+
+
+
+
+
+#n=factorial(n) is the inbuilt command
+n= as.integer(readline(prompt = "Enter a number: "))
+class(n)
+factorial = 1
+if(n<0){
+  print("The faactorial value does not exist. Enter a non-negative integer")
+}else if(n==0){
+  print("The factorial is 1")
+}else{
+  for(i in 1:n){
+    factorial = i*factorial
+  }
+  print(paste("The factorial is ",factorial))
+}
+
+
+
+
+
+# fibionacci series
+n = as.integer(readline(prompt = "Enter a number: "))
+a=0
+b=1
+if(n<1){
+  print("Enter number greater than 0")
+}else if(n==1){
+  print(0)
+}else{
+  for(i in 1:n){
+    print(a)
+    c=a+b
+    a=b
+    b=c
+  }
+}
+
+
+
+
+
+
+
+# calculator
+add <-function(x,y){
+  return (x+y)
+}
+sub <- function(x,y){
+  return (x-y)
+}
+mul <- function(x,y){
+  return (x*y);
+}
+div <- function(x,y){
+  return (x/y)
+}
+oper = as.character(readline(prompt = "Enter the operation: +, -, *, /: "))
+a = as.numeric(readline(prompt = "Enter first number: "))
+b = as.numeric(readline(prompt = "Enter second number: "))
+#operator <- switch(oper, "+","-","*","/")
+result <- switch(oper,"+"={add(a,b)},"-"={sub(a,b)},"*" = {mul(a,b)},"/" = {div(a,b)})
+print(paste(" result is : ",result))
+
+
+
+
+
+
+
+
+
+
+
+# plot, pie, barplot, etc.
+x = c(1,3,5,6,9)
+y = c(2,4,8,9,12)
+plot(x,y,type='l')
+z = c(2,3,4,5,6)
+points(z)
+# barplot ->  barplot(H, xlab, ylab, main, names.arg, col)
+A <- c(17, 32, 8, 53, 1)
+barplot(A, xlab = "X-axis", ylab = "Y-axis", main ="Bar-Chart",col = 'green')
+# histogram -> hist(v, main, xlab, xlim, ylim, breaks, col, border)
+v <- c(19, 23, 11, 5, 16, 21, 32, 14, 19, 27, 39)
+hist(v, xlab = "No.of Articles ", col = "orange", border = "black")
+# pie -> pie(x, labels, radius, main, col, clockwise)
+geeks<- c(23, 56, 20, 63)
+labels <- c("Mumbai", "Pune", "Chennai", "Bangalore")
+pie(geeks, labels)
+
+
+
+
+
+
+
+
+
+
+# sample space
+# sample(data, size, replace = FALSE, prob = NULL)
+medals <- rep(c("G","s","B"),times = c(20,30,50))
+# chest <- c(rep("g",20),rep("s",30),rep("b",50))
+
+print(sample(medals,10,replace = FALSE,prob = NULL))
+
+
+
+
+
+
+
+# prob()
+chance <- c("success","failure")
+pro <- c(0.9,0.1)
+for(i in 1:10){
+  print(sample(chance, 1, replace = TRUE, prob = pro))
+}
+
+
+
+
+
+
+
+
+#lst1 = list(sample(1 : 365, size = 10, replace = F))
+#print(prob(lst1,duplicated(lst1)))
+n= as.integer(readline(prompt = "Enter the value of n: "))
+ans =1
+for(i in 1:n-1){
+  x = 1-(i)/365
+  ans = ans*x;
+  # if we have to find the smallest value for which prob >0.5
+  if(ans<0.5){
+    print(paste("value of n: ",i+1))
+    break
+  }
+}
+print(1-ans)
+# note: if inside for is only for 2nd part of the question
+
+
+
+
+
+
+
+
+
+
+cond_prob <-function(cGivenr,c,r){
+  return (cGivenr*r/c)
+}
+c =0.4
+r =0.2
+cGivenr = 0.85
+ans = cond_prob(cGivenr,c,r)
+print(ans)
+
+
+
+
+
+
+
+
+
+
+
+# assignment 2 -> q4
+data <-iris;
+#find the structure of the dataset
+str(data)
+
+# print first few rows 
+head(data)
+
+# range of data regarding sepal length
+a = range(data$Sepal.Length)
+print(a[2]-a[1])
+
+# mean of sepal length
+mean(data$Sepal.Length)
+
+# median of sepal length
+median(data$Sepal.Length)
+
+# find the first and thrid quartile and hence the interquartile range
+first = quantile(data$Sepal.Length, 0.25)
+second = quantile(data$Sepal.Length,0.75)
+iqr = second - first
+iqr = unname(iqr)
+print(iqr)
+
+#find the standard deviation and variance
+sd(data$Sepal.Length)
+var(data$Sepal.Length)
+
+# summary
+summary(data$Sepal.Length)
+
+
+
+
+
+
+
+
+
+
+
+
+
+# mode function 
+mode <-function(v){
+  uniq = unique(v)
+  uniq[which.max(tabulate(match(v, uniq)))]
+  }
+v <- c(1,2,4,3,2,4,1,2,3,2,4,2,1,1,2,3)
+ans =mode(v)
+print(ans)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+k1 = 6
+k2 =9
+p= 1/6
+n = 12
+ans = pbinom(9,n,p,lower.tail = TRUE)- pbinom(6,n,p,lower.tail = TRUE)
+print(ans)
+x=c(7,8,9)
+a = dbinom(x,size = 12,prob = (1/6))
+print(sum(a))
+
+
+
+
+
+
+
+
+
+
+std = 15.2
+ans = pnorm(84,mean=72,std,lower.tail = FALSE)
+print(ans)
+
+
+
+
+
+
+
+
+
+print(dpois(0,5))
+print(ppois(50,50,lower.tail = TRUE)-ppois(47,50,lower.tail = TRUE))
+
+
+
+
+
+
+
+
+
+N = 250
+m = 17
+k = 3
+n = 5
+ans = dhyper(k,m,N-m,n)
+print(ans)
+
+
+
+
+
+
+
+
+
+# Q5(a) -> x is distributed binomialy with n = 31 and prob = 0.447
+n = 31
+p = 0.447
+q= 1-0.447
+N = c(1:31)
+pdf = c(dbinom(N,31,0.447))
+plot(N,pdf,type='l')
+cdf = c(pbinom(N,31,0.447,lower.tail = TRUE))
+plot(N,cdf,type='l')
+
+mean = n*p
+var = n*p*q
+std = sqrt(n*p*q)
+
+
+
+
+
+
+
+
+
+#assignment -4
+#q1 
+
+p <- c(0.41,0.37,0.16,0.05,0.01)
+x <-c(0,1,2,3,4)
+sum(x*p)
+ans <-weighted.mean(x,p)
+c(x%*%p)
+print(ans)
+
+
+
+
+
+
+
+
+
+
+#q2 
+f1 <- function(t){
+  t*0.1*exp(-0.1*t)
+}
+ans = integrate(f1,lower=0,upper = Inf)
+print(ans$value)
+
+
+
+
+
+
+
+
+
+#q3
+
+x <- c(0,1,2,3)
+px <- c(0.1,0.2,0.2,0.5)
+y <-  10*x-12
+print(y)
+print(sum(y*px))
+print(weighted.mean(y,px))
+print(y%*%px)
+
+
+
+
+
+
+
+
+
+#q4
+
+fx <- function(x){
+  x*0.5*exp(-1*abs(x))
+}
+fx2 <- function(x){
+  x*x*0.5*exp(-1*abs(x))
+}
+
+e1 = integrate(fx,lower=1,upper=10)
+print(e1$value)
+e2 = integrate(fx2,lower=1,upper=10)
+print(e2$value)
+var = e2$value-(e1$value)**2
+print(var)
+
+
+
+
+
+
+
+
+
+
+#q5 
+
+f1 <- function(y){
+  (3/4)*((1/4)**(sqrt(y)-1))
+}
+print(paste("value of f(x=3): ",f1(9)))
+x <-c(1,2,3,4,5)
+y <- x**2
+e1 = sum(y*f1(y))
+print(e1)
+e2 = sum(y*y*f1(y))
+print(e2-e1*e1)
